@@ -25,7 +25,7 @@
                         <td>{{ $comic->sale_date }}</td>
                         <td>{{ $comic->type }}</td>
                         <td>
-                            <button class="btn btn-sm btn-primary">Show</button>
+                            <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-sm btn-primary">Show</a>
                         </td>
                     </tr>
                 @empty

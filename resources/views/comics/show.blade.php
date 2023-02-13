@@ -8,10 +8,10 @@
                 <h2 class="card-title">{{ $comic->title }}</h2>
                 <p class="card-text">{{ $comic->description }}</p>
                 <p>
-                    {{ $comic->price }}
-                    {{ $comic->series }}
-                    {{ $comic->sale_date }}
-                    {{ $comic->type }}
+                    Price: {{ $comic->price }} <br>
+                    Series: {{ $comic->series }} <br>
+                    Sale date: {{ $comic->sale_date }} <br>
+                    Type: {{ $comic->type }}
                 </p>
             </div>
         </div>
