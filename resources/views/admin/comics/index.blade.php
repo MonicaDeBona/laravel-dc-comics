@@ -2,7 +2,7 @@
 
 @section('main-content')
     <div class="container pt-5">
-        <a href="{{ route('comics.create') }}" class="btn btn-sm btn-primary">Create new comic</a>
+        <a href="{{ route('admin.comics.create') }}" class="btn btn-sm btn-primary">Create new comic</a>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -25,7 +25,7 @@
                         <td>{{ $comic->sale_date }}</td>
                         <td>{{ $comic->type }}</td>
                         <td>
-                            <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-sm btn-primary">Show</a>
+                            <a href="{{ route('admin.comics.show', $comic->id) }}" class="btn btn-sm btn-primary">Show</a>
                         </td>
                     </tr>
                 @empty

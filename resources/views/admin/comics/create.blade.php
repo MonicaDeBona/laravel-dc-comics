@@ -2,7 +2,7 @@
 
 @section('main-content')
     <div class="container pt-5">
-        <form action="{{ route('comics.store') }}" method="POST">
+        <form action="{{ route('admin.comics.store') }}" method="POST">
             @csrf
             <div class="mb-3">
                 <label class="form-label">
