@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>
-        @yield('title', 'DC Comics')
+        @yield('title', 'Dc Comics')
     </title>
 
     <!-- Fonts -->
@@ -18,7 +18,6 @@
 </head>
 
 <body>
-    @include('partials.header')
     <main>
         @yield('main-content')
     </main>

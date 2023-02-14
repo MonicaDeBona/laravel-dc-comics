@@ -1,8 +1,11 @@
 @extends('layouts.app')
-
+@section('title', 'Comic')
 @section('main-content')
     <div class="container pt-5">
-        <a href="{{ route('admin.comics.create') }}" class="btn btn-sm btn-primary">Create new comic</a>
+        @dump(Route::currentRouteName())
+        <a href="{{ route('admin.comics.create') }}" class="btn btn-sm btn-primary">
+            Create new comic
+        </a>
         <table class="table table-hover">
             <thead>
                 <tr>

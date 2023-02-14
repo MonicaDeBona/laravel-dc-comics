@@ -1,7 +1,8 @@
 @extends('layouts.app')
-
+@section('title', "Pasta - $product->title")
 @section('main-content')
     <div class="container pt-5">
+        @dump(Route::currentRouteName())
         <div class="card">
             <img src="{{ $comic->thumb }}" class="img-fluid" alt="{{ $comic->title }}">
             <div class="card-body">

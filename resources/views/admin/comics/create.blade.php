@@ -1,7 +1,8 @@
 @extends('layouts.app')
-
+@section('title', 'Create new comic')
 @section('main-content')
     <div class="container pt-5">
+        @dump(str_starts_with(Route::currentRouteName(), 'admin.comics'))
         <form action="{{ route('admin.comics.store') }}" method="POST">
             @csrf
             <div class="mb-3">
