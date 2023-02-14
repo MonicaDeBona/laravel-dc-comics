@@ -2,7 +2,7 @@
 
 @section('main-content')
     <div class="container pt-5">
-
+        <a href="{{ route('comics.create') }}" class="btn btn-sm btn-primary">Create new comic</a>
         <table class="table table-hover">
             <thead>
                 <tr>
