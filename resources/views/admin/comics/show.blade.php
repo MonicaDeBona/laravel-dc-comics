@@ -16,7 +16,11 @@
                 </p>
                 <div>
                     <a href="{{ route('admin.comics.edit', $comic->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                    {{-- <a href="{{ route('admin.comics.show', $comic->id) }}" class="btn btn-sm btn-primary">Delete</a> --}}
+                    <form action="{{ route('admin.comics.destroy', $comic->id) }}" method="POST" class="d-inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
