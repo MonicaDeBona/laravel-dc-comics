@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', "Pasta - $product->title")
+@section('title', "Comic - $comic->title")
 @section('main-content')
     <div class="container pt-5">
         @dump(Route::currentRouteName())

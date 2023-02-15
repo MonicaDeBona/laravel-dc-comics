@@ -20,10 +20,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GuestPageController::class, 'home'])->name('guest.home');
 
-Route::prefix('admin')->name('admin.comics.')->group(function () {
-    Route::get('home', [AdminPageController::class, 'home'])->name('home');
-    Route::get('/', [ComicController::class, 'index'])->name('index');
-    Route::get('/create', [ComicController::class, 'create'])->name('create');
-    Route::get('/{id}', [ComicController::class, 'show'])->name('show');
-    Route::post('/store', [ComicController::class, 'store'])->name('store');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminPageController::class, 'home'])->name('comics.home');
+    // Route::get('/', [ComicController::class, 'index'])->name('index');
+    // Route::get('/create', [ComicController::class, 'create'])->name('create');
+    // Route::get('/{id}', [ComicController::class, 'show'])->name('show');
+    // Route::post('/store', [ComicController::class, 'store'])->name('store');
+    // Route::get('/{id}/edit', [ComicController::class, 'edit'])->name('edit');
+    // Route::put('/{id}', [ComicController::class, "update"])->name("update");
+    Route::resource('comics', ComicController::class);
 });

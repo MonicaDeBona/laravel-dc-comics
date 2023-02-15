@@ -6,8 +6,8 @@
             @dump(Route::currentRouteName())
             <div class="col-12">
                 @include('admin.comics.partials.form', [
-                    'route' => 'admin.comics.store',
-                    'method' => 'POST',
+                    'route' => 'admin.comics.update',
+                    'method' => 'PUT',
                     'comic' => $comic,
                 ])
             </div>

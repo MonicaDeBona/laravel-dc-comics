@@ -26,7 +26,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        return view('admin.comics.create');
+        return view('admin.comics.create', ['comic' => new Comic()]);
     }
 
     /**
@@ -61,12 +61,12 @@ class ComicController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Comic $comic
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+        return view('admin.comics.edit', compact('comic'));
     }
 
     /**
@@ -78,7 +78,11 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $formData = $request->all();
+        $comic = Comic::findOrFail($id);
+
+        $comic->update($formData);
+        return redirect()->route('admin.comics.show', $comic->id);
     }
 
     /**
