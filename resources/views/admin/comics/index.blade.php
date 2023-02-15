@@ -31,7 +31,7 @@
                             <a href="{{ route('admin.comics.show', $comic->id) }}" class="btn btn-sm btn-primary">Show</a>
                             <a href="{{ route('admin.comics.edit', $comic->id) }}" class="btn btn-sm btn-warning">Edit</a>
                             <form action="{{ route('admin.comics.destroy', $comic->id) }}" method="POST"
-                                class="d-inline-block">
+                                class="d-inline-block form-deleter" data-element-name="{{ $comic->title }}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-sm btn-danger">Delete</button>
@@ -44,4 +44,8 @@
             </tbody>
         </table>
     </div>
+@endsection
+
+@section('scripts')
+    @vite('resources/js/deleteForm.js')
 @endsection
