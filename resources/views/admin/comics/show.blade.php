@@ -14,6 +14,10 @@
                     Sale date: {{ $comic->sale_date }} <br>
                     Type: {{ $comic->type }}
                 </p>
+                <div>
+                    <a href="{{ route('admin.comics.edit', $comic->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                    {{-- <a href="{{ route('admin.comics.show', $comic->id) }}" class="btn btn-sm btn-primary">Delete</a> --}}
+                </div>
             </div>
         </div>
     </div>

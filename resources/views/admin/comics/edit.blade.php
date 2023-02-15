@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Create new comic')
+@section('title', "Edit $comic->title")
 @section('main-content')
     <div class="container pt-5">
         <div class="row">

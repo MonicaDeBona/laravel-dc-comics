@@ -29,6 +29,8 @@
                         <td>{{ $comic->type }}</td>
                         <td>
                             <a href="{{ route('admin.comics.show', $comic->id) }}" class="btn btn-sm btn-primary">Show</a>
+                            <a href="{{ route('admin.comics.edit', $comic->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            {{-- <a href="{{ route('admin.comics.show', $comic->id) }}" class="btn btn-sm btn-primary">Delete</a> --}}
                         </td>
                     </tr>
                 @empty
