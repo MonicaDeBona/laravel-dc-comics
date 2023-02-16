@@ -2,6 +2,11 @@
 @section('title', 'Comic')
 @section('main-content')
     <div class="container pt-5">
+        @if (session('message'))
+            <div class="alert alert-warning">
+                {{ session('message') }}
+            </div>
+        @endif
         @dump(Route::currentRouteName())
         <a href="{{ route('admin.comics.create') }}" class="btn btn-sm btn-primary">
             Create new comic

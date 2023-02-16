@@ -41,7 +41,7 @@ class ComicController extends Controller
 
         $request->validate(
             [
-                'title' => 'required|string|min:2|max:200|unique:comics, title',
+                'title' => 'required|string|min:2|max:200',
                 'description' => 'required|string|min:10',
                 'thumb' => 'required|url|min:5',
                 'price' => 'required|numeric|between:0.01,999999.99',
@@ -159,6 +159,6 @@ class ComicController extends Controller
     public function destroy(Comic $comic)
     {
         $comic->delete();
-        return redirect()->route('admin.comics.index');
+        return redirect()->route('admin.comics.index')->with('message', "$comic->title has been deleted");
     }
 }
