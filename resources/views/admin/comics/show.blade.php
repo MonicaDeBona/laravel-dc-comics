@@ -2,6 +2,11 @@
 @section('title', "Comic - $comic->title")
 @section('main-content')
     <div class="container pt-5">
+        @if (session('message'))
+            <div class="alert alert-{{ session('alert-type') }}">
+                {{ session('message') }}
+            </div>
+        @endif
         @dump(Route::currentRouteName())
         <div class="card">
             <img src="{{ $comic->thumb }}" class="img-fluid" alt="{{ $comic->title }}">
