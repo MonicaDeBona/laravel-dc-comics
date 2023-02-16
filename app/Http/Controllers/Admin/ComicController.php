@@ -8,6 +8,31 @@ use Illuminate\Http\Request;
 
 class ComicController extends Controller
 {
+    private $validationRules;
+
+    public function __construct()
+    {
+        $this->validationRules = [
+            'title.required' => 'Missing title',
+            'title.min' => 'Title must be at least :min characters',
+            'title.max' => 'Title cannot be longer than :max characters',
+            'description.required' => 'Missing description',
+            'description.min' => 'Description must be at least :min characters',
+            'thumb.required' => 'Missing image URL',
+            'thumb.url' => 'Invalid image URL',
+            'thumb.min' => 'Image URL must be at least :min characters',
+            'price.required' => 'Missing price',
+            'price.numeric' => 'Price must be a number',
+            'price.between' => 'Price must be between :min and :max',
+            'series.required' => 'Missing serie',
+            'series.max' => 'Serie must not exceed :max characters',
+            'sale_date.required' => 'Missing sale date',
+            'sale_date.date' => 'Sale date must be a valid date',
+            'type.required' => 'Missing type',
+            'type.min' => 'Type must be at least :min characters',
+            'type.max' => 'Type must not exceed :max characters',
+        ];
+    }
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +66,7 @@ class ComicController extends Controller
 
         $request->validate(
             [
-                'title' => 'required|string|min:2|max:200',
+                'title' => 'required|string|min:2|max:200|unique:comics,title',
                 'description' => 'required|string|min:10',
                 'thumb' => 'required|url|min:5',
                 'price' => 'required|numeric|between:0.01,999999.99',
@@ -49,26 +74,7 @@ class ComicController extends Controller
                 'sale_date' => 'required|date',
                 'type' => 'required|min:2|max:30',
             ],
-            [
-                'title.required' => 'Missing title',
-                'title.min' => 'Title must be at least :min characters',
-                'title.max' => 'Title cannot be longer than :max characters',
-                'description.required' => 'Missing description',
-                'description.min' => 'Description must be at least :min characters',
-                'thumb.required' => 'Missing image URL',
-                'thumb.url' => 'Invalid image URL',
-                'thumb.min' => 'Image URL must be at least :min characters',
-                'price.required' => 'Missing price',
-                'price.numeric' => 'Price must be a number',
-                'price.between' => 'Price must be between :min and :max',
-                'series.required' => 'Missing serie',
-                'series.max' => 'Serie must not exceed :max characters',
-                'sale_date.required' => 'Missing sale date',
-                'sale_date.date' => 'Sale date must be a valid date',
-                'type.required' => 'Missing type',
-                'type.min' => 'Type must be at least :min characters',
-                'type.max' => 'Type must not exceed :max characters',
-            ]
+            $this->validationRules,
         );
 
         $newComic = new Comic();
@@ -123,26 +129,7 @@ class ComicController extends Controller
                 'sale_date' => 'required|date',
                 'type' => 'required|min:2|max:30',
             ],
-            [
-                'title.required' => 'Missing title',
-                'title.min' => 'Title must be at least :min characters',
-                'title.max' => 'Title cannot be longer than :max characters',
-                'description.required' => 'Missing description',
-                'description.min' => 'Description must be at least :min characters',
-                'thumb.required' => 'Missing image URL',
-                'thumb.url' => 'Invalid image URL',
-                'thumb.min' => 'Image URL must be at least :min characters',
-                'price.required' => 'Missing price',
-                'price.numeric' => 'Price must be a number',
-                'price.between' => 'Price must be between :min and :max',
-                'series.required' => 'Missing serie',
-                'series.max' => 'Serie must not exceed :max characters',
-                'sale_date.required' => 'Missing sale date',
-                'sale_date.date' => 'Sale date must be a valid date',
-                'type.required' => 'Missing type',
-                'type.min' => 'Type must be at least :min characters',
-                'type.max' => 'Type must not exceed :max characters',
-            ]
+            $this->validationRules,
         );
 
 
