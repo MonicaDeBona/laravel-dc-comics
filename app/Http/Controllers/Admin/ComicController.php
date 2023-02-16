@@ -39,6 +39,38 @@ class ComicController extends Controller
     {
         $comic = $request->all();
 
+        $request->validate(
+            [
+                'title' => 'required|string|min:2|max:200',
+                'description' => 'required|string|min:10',
+                'thumb' => 'required|url|min:5',
+                'price' => 'required|numeric|between:0.01,999999.99',
+                'series' => 'required|string|max:100',
+                'sale_date' => 'required|date',
+                'type' => 'required|min:2|max:30',
+            ],
+            [
+                'title.required' => 'Missing title',
+                'title.min' => 'Title must be at least :min characters',
+                'title.max' => 'Title cannot be longer than :max characters',
+                'description.required' => 'Missing description',
+                'description.min' => 'Description must be at least :min characters',
+                'thumb.required' => 'Missing image URL',
+                'thumb.url' => 'Invalid image URL',
+                'thumb.min' => 'Image URL must be at least :min characters',
+                'price.required' => 'Missing price',
+                'price.numeric' => 'Price must be a number',
+                'price.between' => 'Price must be between :min and :max',
+                'series.required' => 'Missing serie',
+                'series.max' => 'Serie must not exceed :max characters',
+                'sale_date.required' => 'Missing sale date',
+                'sale_date.date' => 'Sale date must be a valid date',
+                'type.required' => 'Missing type',
+                'type.min' => 'Type must be at least :min characters',
+                'type.max' => 'Type must not exceed :max characters',
+            ]
+        );
+
         $newComic = new Comic();
         $newComic->fill($comic);
         $newComic->save();
@@ -80,35 +112,7 @@ class ComicController extends Controller
     {
         $formData = $request->all();
         $comic = Comic::findOrFail($id);
-        $request->validate(
-            [
-                'title' => 'required|string|min:2|max:200',
-                'description' => 'required|string|min:10',
-                'thumb' => 'required|url|min:5',
-                'price' => 'required|numeric|between:0.01,999999.99',
-                'series' => 'required|string|max:100',
-                'sale_date' => 'required|date',
-                'type' => 'required|min:2|max:30',
-            ],
-            [
-                'title.required' => 'Missing title field',
-                'title.min' => 'Title must be at least :min characters',
-                'title.max' => 'Title cannot be longer than :max characters',
-                'description.required' => 'Missing description field',
-                'description.min' => 'Description must be at least :min characters',
-                'thumb.required' => 'Missing thumbnail URL field',
-                'thumb.url' => 'Invalid thumbnail URL',
-                'thumb.min' => 'Thumbnail URL must be at least :min characters',
-                'price.required' => 'Missing price field',
-                'price.numeric' => 'The price must be a number',
-                'price.between' => 'The price must be between :min and :max',
-                'sale_date.required' => 'Missing sale date field',
-                'sale_date.date' => 'Sale date must be a valid date',
-                'type.required' => 'Missing type field',
-                'type.min' => 'Type must be at least :min characters',
-                'type.max' => 'Type must not exceed :max characters',
-            ]
-        );
+
 
         $comic->update($formData);
         return redirect()->route('admin.comics.show', $comic->id);
